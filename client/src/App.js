@@ -1,16 +1,17 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
+import { useMemo } from "react";
 import { useSelector } from "react-redux";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { themeSettings } from "theme";
-import useMemo from "react";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import Layout from "scenes/layout";
 import Dashboard from "scenes/dashboard";
-import Layout from "scenes/layout/index";
+
 function App() {
   const mode = useSelector((state) => state.global.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
   return (
-    <div>
+    <div className="app">
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <CssBaseline />
@@ -22,7 +23,6 @@ function App() {
           </Routes>
         </ThemeProvider>
       </BrowserRouter>
-      shaa
     </div>
   );
 }
